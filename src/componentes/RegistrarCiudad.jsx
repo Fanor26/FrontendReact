@@ -15,15 +15,15 @@ export const RegistrarCiudad = () => {
               <div className="card-body">
                 <form onSubmit={"guardar"}>
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="form-grupop">
                       <label>Nombre de la Ciudad</label>
                       <input type="text" className="form-control required" />
                     </div>
-                    <div className="col-md-6">
+                    <div className="form-grupop">
                       <label>Correo</label>
                       <input type="text" className="form-control required" />
                     </div>
-                    <div className="col-md-6">
+                    <div className="form-grupop">
                       <label>Contraseña</label>
                       <input type="text" className="form-control required" />
                     </div>

@@ -14,12 +14,13 @@ export const Barra =()=>{
           <Container fluid>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
         
-            <Navbar.Brand href="#">Bienvenido Fanor</Navbar.Brand>
+            <Navbar.Brand href="#"> <i class="fa-solid fa-user-tie"></i> Bienvenido Fanor</Navbar.Brand>
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Brand href="#"></Navbar.Brand>
-            <Navbar.Brand href="#">Cerrar Sesion</Navbar.Brand>
+            <Navbar.Brand href="#">  <i class="fa-solid fa-user-xmark"></i> Cerrar Sesion</Navbar.Brand>
+      
             <Navbar.Offcanvas
               id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel"
@@ -37,19 +38,15 @@ export const Barra =()=>{
                     title="Registros"
                     id="offcanvasNavbarDropdown"
                   >
-                    <NavDropdown.Item href="/registrarPersona">Registrar Persona</NavDropdown.Item>
-                    <NavDropdown.Item href="/registrarCiudad">
-                      Registrar Ciudad
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/registrarPersona"> <i class="fa-solid fa-user-plus"></i> Registrar Persona</NavDropdown.Item>
+                    <NavDropdown.Item href="/registrarCiudad"> <i class="fa-solid fa-user-plus"></i>  Registrar Ciudad  </NavDropdown.Item>
                   </NavDropdown>
                   <NavDropdown
                     title="Reportes"
                     id="offcanvasNavbarDropdown"
                   >
-                    <NavDropdown.Item href="/verPersonas">Ver Personas</NavDropdown.Item>
-                    <NavDropdown.Item href="/verCiudad">
-                      Ver Ciudad
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/verPersonas"><i class="fa-solid fa-clipboard"></i>  Ver Personas</NavDropdown.Item>
+                    <NavDropdown.Item href="/verCiudad"> <i class="fa-solid fa-clipboard"></i>  Ver Ciuda </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
                 <Form className="d-flex">
