@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,7 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import Swal from 'sweetalert2'
+import Axios from 'axios'
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,14 +30,45 @@ function Copyright(props) {
 const theme = createTheme();
 
 export const Login = () =>{
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const [correo, setCorreo] = useState('')
+    const [contrasena, setContrasena]= useState('') 
+  
+  const login = async(e)=>{
+  e.preventDefault(); 
+  const usuario={correo,contrasena}
+   const respuesta = await Axios.post('http://localhost:4000/ciudad/login',usuario); 
+    
+   console.log(respuesta) 
+   
+   const mensaje= respuesta.data.mensaje
+  if(mensaje!=='Bienvenido') {
+  
+    Swal.fire({
+      icon: 'error', 
+      title: mensaje, 
+      showConfirmButton: false,
+      timer: 1500 
+    })
+  }
+    else{
+  
+    const token = respuesta.data.token 
+    const nombre = respuesta.data.nombre
+    const idUsuario = respuesta.data.id
+  
+    sessionStorage.setItem(' token',token )
+    sessionStorage.setItem('nombre',nombre) 
+    sessionStorage.setItem('idUsuario',idUsuario) 
+     
+     Swal.fire({
+        icon:'success', 
+        title: mensaje, 
+        showConfirmButton: false, 
+        timer: 1500
+     })
+   window.location.href='/index'
+    }
+    }
 
   return (
     <ThemeProvider theme={theme}>
@@ -72,7 +104,7 @@ export const Login = () =>{
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" novalidate onSubmit={login} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -82,6 +114,7 @@ export const Login = () =>{
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=>setCorreo(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -92,6 +125,7 @@ export const Login = () =>{
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>setContrasena(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
