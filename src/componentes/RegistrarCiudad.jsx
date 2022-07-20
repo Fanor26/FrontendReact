@@ -10,7 +10,7 @@ export const RegistrarCiudad = () => {
                 <i className="fas fa-user-plus"></i>
               </div>
               <div className="card-header bg-info text-center">
-                <h4>Registrar paciente</h4>
+                <h4>Registrar Ciudad</h4>
               </div>
               <div className="card-body">
                 <form onSubmit={"guardar"}>
