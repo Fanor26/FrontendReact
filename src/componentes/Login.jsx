@@ -19,7 +19,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+    DevFanor
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -36,7 +36,7 @@ export const Login = () =>{
   const login = async(e)=>{
   e.preventDefault(); 
   const usuario={correo,contrasena}
-   const respuesta = await Axios.post('http://localhost:4000/ciudad/login',usuario); 
+   const respuesta = await Axios.post('/ciudad/login',usuario); 
     
    console.log(respuesta) 
    
@@ -66,12 +66,13 @@ export const Login = () =>{
         showConfirmButton: false, 
         timer: 1500
      })
-   window.location.href='/index'
+   window.location.href='/dashboard'
     }
     }
 
   return (
     <ThemeProvider theme={theme}>
+    
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -102,7 +103,7 @@ export const Login = () =>{
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign in
+              Login
             </Typography>
             <Box component="form" novalidate onSubmit={login} sx={{ mt: 1 }}>
               <TextField
@@ -146,7 +147,7 @@ export const Login = () =>{
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/registrarCiudad" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
